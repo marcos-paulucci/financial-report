@@ -1,15 +1,32 @@
 import { Request, Response} from "express";
-import { getCSVFileContents } from "../services/readFileService";
-import { HTTPGet } from "../services/HTTPService";
+import { getConsolidatedData, getSecondsPerUser, getAmountsPerLabel, consolidateData} from "../services/consolidationService";
+import { CentralDataItem } from "../types/CentralDataItem";
+import { LabelReportItem } from "../types/LabelReportItem";
+import { UserReportItem } from "../types/UserReportItem";
 
-export const testGetStreamingFile = (req: Request, res: Response) => {
-    getCSVFileContents(req.params.fileName);
-    res.send({ result: "1000" });
+export const buildStats = async (_: Request, res: Response) => {
+    await consolidateData(); 
+    res.send("Processing");
 };
 
-export const testGetHTTPResponse = (req: Request, res: Response) => {
-    HTTPGet(req.params.url);
-    res.send({ result: "1000" });
+export const getStats = async (_: Request, res: Response) => {
+    const data: CentralDataItem[] = await getConsolidatedData(); 
+    res.send(data);
+};
+
+export const getLabelsReport = async (_: Request, res: Response) => {
+    const data: LabelReportItem[] = getAmountsPerLabel(); 
+    res.send(data);
+};
+
+export const getUsersReport = async (_: Request, res: Response) => {
+    const data: UserReportItem[] = getSecondsPerUser(); 
+    res.send(data);
+};
+
+export const getUserReport = async (req: Request, res: Response) => {
+    const data: UserReportItem = getSecondsPerUser().find(userEl => userEl.userId === req.params.userId); 
+    res.send(data);
 };
 
 

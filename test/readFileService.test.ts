@@ -1,4 +1,4 @@
-import { getCSVFileContents } from "../src/services/readFileService";
+import { getCSVFileContents } from "../src/services/util/readFileService";
 
 describe("test read CSV files", () => {
     it("should retrieve the data", async () => {

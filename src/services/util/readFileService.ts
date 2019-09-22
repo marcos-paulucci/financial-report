@@ -2,7 +2,7 @@ import { createReadStream } from "fs";
 import csv  from "csv-parser";
 import path from "path";
 
-const getFilePath =  (fileName: string) => path.join(__dirname, "..", "files", fileName);
+const getFilePath =  (fileName: string) => path.join(__dirname, "../..", "files", fileName);
 
 
 const _getCSVFileContents = (filename: string): Promise<any[]> => {
@@ -20,7 +20,7 @@ const _getCSVFileContents = (filename: string): Promise<any[]> => {
             })
             .on("end",function(){
                 resolve(dataAcum);
-                console.log("end of file");
+                //console.log("end of file");
             });
     });
 };

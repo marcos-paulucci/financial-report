@@ -12,3 +12,7 @@ npm start
 
 ### Running tests
 Simply run `npm run test`
+
+# Architecture
+
+The solution to the requirement was implemented using typescript

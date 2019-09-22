@@ -1,4 +1,4 @@
-import { HTTPGet } from "../src/services/HTTPService";
+import { HTTPGet } from "../src/services/util/HTTPService";
 
 describe("test send GET request", () => {
     it("should return JSON data", async () => {

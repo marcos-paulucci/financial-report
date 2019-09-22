@@ -1,4 +1,4 @@
-import { retrieveTracks, retrieveUsers, retrieveStreamings, buildTrackFromJson, buildUserFromJson } from "../src/services/reduceDataService";
+import { retrieveTracks, retrieveUsers, retrieveStreamings, buildTrackFromJson } from "../src/services/externalDataService";
 import { User } from "../src/types/User";
 import { Streaming } from "../src/types/Streaming";
 import { Track } from "../src/types/Track";
@@ -8,6 +8,7 @@ describe("test retrieve tracks", () => {
         const tracks: Track[] = await retrieveTracks();
         expect(tracks).toBeTruthy();
         expect(tracks.length  > 0).toBe(true);
+        expect(tracks[0].id).toEqual("71f4ca0346edbe5327af3885e2253928");
     });
 });
 
@@ -43,16 +44,32 @@ describe("test buildTrackFromJson buils Track properly", () => {
     });
 });
 
-describe("test buildUserFromJson buils User properly", () => {
+describe("test  User factory method buils User properly", () => {
     it("should build a corrrect user", async () => {
         const userValues = ["7699007", "premium", "7,99", "app_store"];
 
-        const user: User = buildUserFromJson(userValues);
+        const user: User = new User(...userValues);
         expect(user).toBeTruthy();
         expect(user.id).toEqual("7699007");
         expect(user.productType).toEqual("premium");
         expect(user.fee).toEqual("7,99");
         expect(user.origin).toEqual("app_store");
+    });
+});
+
+describe("test build Streamings factory buils Streaming properly", () => {
+    it("should build a corrrect Streaming", async () => {
+        const streamingValues: any[] = [new Date("01/03/2019"), "7699007", "US", "71700f062f1e57e4d2beea5b9db11b7b", "2263"];
+
+
+        const streaming: Streaming = new Streaming(...streamingValues);
+        expect(streaming).toBeTruthy();
+        expect(streaming.date).toEqual(new Date("01/03/2019"));
+        expect(streaming.userId).toEqual("7699007");
+        expect(streaming.region).toEqual("US");
+        expect(streaming.trackId).toEqual("71700f062f1e57e4d2beea5b9db11b7b");
+        expect(streaming.seconds.toString()).toEqual("2263");
+
     });
 });
 

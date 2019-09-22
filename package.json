@@ -1,11 +1,7 @@
 {
-  "name": "express-typescript-starter",
-  "version": "0.1.0",
-  "description": "A starting point for Node.js express apps with TypeScript",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Microsoft/TypeScript-Node-Starter"
-  },
+  "name": "streaming-reports",
+  "version": "1.0.0",
+  "description": "Application that solves the test at https://github.com/Primephonic/backend-engineer-assignment/blob/master/README.md",
   "scripts": {
     "start": "npm run serve",
     "build": "npm run build-ts && npm run lint  && npm run copy-static-assets",
