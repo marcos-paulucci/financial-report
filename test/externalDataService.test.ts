@@ -52,7 +52,7 @@ describe("test  User factory method buils User properly", () => {
         expect(user).toBeTruthy();
         expect(user.id).toEqual("7699007");
         expect(user.productType).toEqual("premium");
-        expect(user.fee).toEqual("7,99");
+        expect(user.fee.toString()).toEqual("7.99");
         expect(user.origin).toEqual("app_store");
     });
 });

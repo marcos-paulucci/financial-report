@@ -1,7 +1,11 @@
 import fetch from "node-fetch";
 
+/**
+* Retrieve JSOn data from uri
+* @param url
+* @returns Promise for the data
+*/
 export const HTTPGet = async (url: string): Promise<any> => {
-    //"https://jsonplaceholder.typicode.com/todos/1"
     try {
         const response = await fetch(url);
         const json = await response.json();

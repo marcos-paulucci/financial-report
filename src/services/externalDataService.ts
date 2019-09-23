@@ -3,7 +3,13 @@ import { getCSVFileContents } from "./util/readFileService";
 import { User } from "../types/User";
 import { Streaming } from "../types/Streaming";
 import { Track } from "../types/Track";
+const tracksUri = require("config").get("tracks-uri");
+const usersFile = require("config").get("users-file");
+const streamingsFile = require("config").get("streamings-file");
 
+/**
+* @returns Builds a track out of an array of values
+*/
 export const buildTrackFromJson = (trackJson: any): Track => {
     const arrayValues: any[] =  Object.keys(trackJson).map(function(key: string) {
         return trackJson[key];
@@ -11,14 +17,20 @@ export const buildTrackFromJson = (trackJson: any): Track => {
     return new Track(...arrayValues);
 };
 
+/**
+* @returns Retrieves tracks from endpoint and builds tracks array
+*/
 export const retrieveTracks = async (): Promise<Track[]> => {
-    const tracksJson: any[] = await HTTPGet("https://backend-assignment.s3.eu-central-1.amazonaws.com/tracks.json");
+    const tracksJson: any[] = await HTTPGet(tracksUri);
     const tracks: Track[] = tracksJson.map(buildTrackFromJson);
     return tracks;
 };
 
+/**
+* @returns Retrieves users from file and builds users array
+*/
 export const retrieveUsers = async (): Promise<User[]> => {
-    const usersCSV: any[] = await getCSVFileContents("users.csv");
+    const usersCSV: any[] = await getCSVFileContents(usersFile);
     const values: User[] = usersCSV.map( userCsv => {
         const arrayValues: string[] =  Object.keys(userCsv).map(function(key) {
             return userCsv[key];
@@ -28,8 +40,12 @@ export const retrieveUsers = async (): Promise<User[]> => {
     return values;
 };
 
+
+/**
+* @returns Retrieves streamings from file and builds streamings array
+*/
 export const retrieveStreamings = async (): Promise<Streaming[]> => {
-    const streamingsCSV: any[] = await getCSVFileContents("streaming.csv");
+    const streamingsCSV: any[] = await getCSVFileContents(streamingsFile);
     const values: Streaming[] = streamingsCSV.map( strCsv => {
         const arrayValues: any[] =  Object.keys(strCsv).map(function(key: string) {
             return strCsv[key];

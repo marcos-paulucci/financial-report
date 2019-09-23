@@ -1,0 +1,6 @@
+{
+  "partitioning-time": 20,
+  "tracks-uri": "https://backend-assignment.s3.eu-central-1.amazonaws.com/tracks.json",
+  "users-file": "users.csv",
+  "streamings-file": "streaming-long.csv"
+}

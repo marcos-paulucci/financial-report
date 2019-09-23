@@ -1,4 +1,5 @@
-export class CentralDataItem {
+
+export class ConsolidatedItem {
     date: Date;
 
     user_id: string;

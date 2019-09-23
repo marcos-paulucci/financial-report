@@ -1,3 +1,3 @@
-interface NumberArray {
+interface NumbersMap {
     [index: string]: number;
 }

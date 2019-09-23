@@ -1,4 +1,4 @@
-import { SourceOfTruth } from "./SourceOfTruth";
+import { Consolidated } from "./Consolidated";
 import { LabelReportItem } from "./LabelReportItem";
 import { UserReportItem } from "./UserReportItem";
 
@@ -12,7 +12,7 @@ export class DBSingleton {
         return this._instance || (this._instance = new this());
     }
 
-    sourceOfTruth: SourceOfTruth;
+    consolidated: Consolidated;
     revenue: number;
 
     amountsPerLabel: LabelReportItem[];
@@ -20,8 +20,8 @@ export class DBSingleton {
     secondsPerUser: UserReportItem[];
 
 
-    private constructor(sourceOfTruth?: SourceOfTruth, revenue?: number, amountsPerLabel?: LabelReportItem[], secondsPerUser?: UserReportItem[]) {
-        this.sourceOfTruth = sourceOfTruth;
+    private constructor(consolidated?: Consolidated, revenue?: number, amountsPerLabel?: LabelReportItem[], secondsPerUser?: UserReportItem[]) {
+        this.consolidated = consolidated;
         this.revenue = revenue;
         this.amountsPerLabel = amountsPerLabel;
         this.secondsPerUser = secondsPerUser;

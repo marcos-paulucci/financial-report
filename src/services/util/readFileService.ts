@@ -4,7 +4,12 @@ import path from "path";
 
 const getFilePath =  (fileName: string) => path.join(__dirname, "../..", "files", fileName);
 
-
+/**
+* Retrieve data for a csv file. This csv package uses streams, which will not block the event loop and will take
+* pieces of the file asynchronously by filling a buffer and calling our callback to process the new chunks of data
+* @param filename to be located on the files directory
+* @returns Promise for the data
+*/
 const _getCSVFileContents = (filename: string): Promise<any[]> => {
     const dataAcum: any[] = [];
     return new Promise((resolve, _) => {
@@ -20,7 +25,6 @@ const _getCSVFileContents = (filename: string): Promise<any[]> => {
             })
             .on("end",function(){
                 resolve(dataAcum);
-                //console.log("end of file");
             });
     });
 };

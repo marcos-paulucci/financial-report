@@ -1,5 +1,5 @@
 import { Track } from "./Track";
 
-export interface TracksArray {
+export interface TracksMap {
     [index: string]: Track;
 }
