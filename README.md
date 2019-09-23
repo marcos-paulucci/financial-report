@@ -1,18 +1,19 @@
 
 # Solution to coding challenge at https://github.com/Primephonic/backend-engineer-assignment
 
-# Install
+## Install
 
 ```
-- Build and run the project
-
-```
-npm run build
-npm start
+npm install
 ```
 
-`http://localhost:3000`
+## Start the project
+
 ```
+npm run build-and-start
+```
+
+Listens at `http://localhost:3000`
 
 ### To trigger consolidation process just navigate/curl to 
 
