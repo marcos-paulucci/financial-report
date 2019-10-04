@@ -42,7 +42,7 @@ The solution to the requirement was implemented using
 * ES6
 * Jest.
 
-There is a controllers layer and a service layer which acceses to a the data resides in memory in a Singleton object (no DB added, to avoid complicating the solution).
+There is a controllers layer and a service layer which accesses the data (in memory Singleton object, no DB added, to avoid complicating the solution).
 Configuration is in config/default.json.
 
 
