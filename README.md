@@ -1,5 +1,5 @@
 
-# Solution to coding challenge at https://github.com/Primephonic/backend-engineer-assignment
+# Solution to a coding challenge: The goal is to ingest data from multiple data sources (csvs and external apis) and consolidate it, without blocking the main thread, using a scalable solution.
 
 ## Install
 
